@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="icon" href="{{ url_for('static',filename='img/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap_b.min.css') }}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesion</title>
+
+</head>
+<body>
+    
+    {% from "admin_login/_formhelpers.html" import render_field %}
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{url_for('login.handle_login')}}">
+                <img src="{{url_for('static',filename='img/logo.svg')}}" alt="" width="140" height="30" class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-5 mb-5">
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-md-6">
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary" style="color:white"><h5 class="fw-bold">Iniciar Sesion</h5></div>
+                    <div class="card-body">
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+            
+                            {{ render_field(form.username,class='form-control text-center',placeholder='Usuario',value='') }}
+                            <br>
+                            {{ render_field(form.dni,class='form-control text-center',placeholder='DNI',value='') }}
+                            <br>
+                            {{ render_field(form.password,class='form-control text-center',placeholder='Contraseña') }}
+                            <br>
+                            {{ render_field(form.submit, class='btn form-control btn-sm btn-outline-success')}}
+                        </form>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- JS BOOTSTRAP CDN -->
+    <script src=" {{ url_for('static',filename='js/bootstrap.bundle.min.js') }}"></script>
+    <!-- FIN SCRIPT BOOTSTRAP -->
+    
+</body>
+</html>

@@ -8,6 +8,7 @@ from config import DevelopmentConfig
 from .models import db
 from .models import migrate
 from .models import bcrypt
+from .models import login_manager
 
 socketio = SocketIO()
 
@@ -17,10 +18,18 @@ def create_app():
     app.config.from_object(DevelopmentConfig)
 
     db.init_app(app)
+    login_manager.init_app(app)
     bcrypt.init_app(app)
     migrate.init_app(app,db)
+    
+    login_manager.login_view = 'login.handle_login'
+    login_manager.login_message = 'Iniciar Sesion'
+    
 
     #Blueprint / Vistas / Rutas de la Aplicacion
+
+    from .routes.admin_login import bp_login
+    app.register_blueprint(bp_login)
     
     from .routes.admin_preceptores import bp_preceptores
     app.register_blueprint(bp_preceptores)
