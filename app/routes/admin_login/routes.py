@@ -30,9 +30,14 @@ def handle_login():
         # Identificar que tipo de cuenta tiene el usuario
         # Redirigir a seccion correspondiente ---> PROFESOR | PRECEPTOR | ALUMNO
 
-        print("CURRENT_USER: ",current_user)
-        
-        return redirect(url_for('alumnos.handle_alumno'))
+        print("CURRENT_USER: ",current_user.tipo_cuenta)
+
+        if current_user.tipo_cuenta == 'Alumno':
+            return redirect(url_for('alumnos.handle_alumno'))
+        elif current_user.tipo_cuenta == 'Preceptor':
+            return redirect(url_for('preceptores.handle_preceptor'))
+        elif current_user.tipo_cuenta == 'Profesor':
+            return redirect(url_for('profesores.handle_profesor'))
 
     form = LoginForm()
 
