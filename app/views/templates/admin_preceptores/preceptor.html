@@ -1,0 +1,16 @@
+{% extends  "./base/base.html" %}
+
+<!-- BLCOK TITLE -> current_user.username -->
+{% block title %} {{ current_user.tipo_cuenta }} - {{ current_user.username }} {% endblock %}
+
+<!-- BLOCK navarTitle -> current_user.username -->
+{% block navarTitle %} {{ current_user.username }} {% endblock %}
+
+
+{% block content %}
+
+<h1>{{ current_user.username }}</h1>
+
+<h1>{{ current_user.tipo_cuenta }}</h1>
+
+{% endblock %}

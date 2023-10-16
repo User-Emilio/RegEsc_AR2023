@@ -13,4 +13,4 @@ from flask import send_file
 @bp_preceptores.route('/preceptor')
 def handle_preceptor():
 
-    return "Route Preceptores OK"
+    return render_template('admin_preceptores/preceptor.html')
